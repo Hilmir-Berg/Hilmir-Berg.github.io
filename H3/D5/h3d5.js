@@ -1,6 +1,5 @@
 var canvas;
 var gl;
-var program; // Declare program at a broader scope
 
 // Current position of the square
 var box = vec2(0.0, 0.0);
@@ -38,7 +37,7 @@ window.onload = function init() {
     dX = Math.random() * 0.1 - 0.05;
     dY = Math.random() * 0.1 - 0.05;
 
-    program = initShaders(gl, "vertex-shader", "fragment-shader");
+    var program = initShaders(gl, "vertex-shader", "fragment-shader");
     gl.useProgram(program);
 
     // Load square data into the GPU
