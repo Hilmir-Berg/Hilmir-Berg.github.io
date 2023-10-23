@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dæmi 1</title>
+</head>
+
+<body>
+    <canvas id="gl-canvas" width="600" height="600"></canvas>
+
+    <p><b>→ og ←</b> stjórna snúningi á <b>stöplinum</b></p>
+    <p><b>Z og X</b> stjórna snúningi á <b>neðri armi</b></p>
+    <p><b>A og S</b> stjórna snúningi á <b>efri armi</b></p>
+    <p><b>Q og W</b> stjórna snúningi á <b>efsta armi</b></p>
+
+    <script id="vertex-shader" type="x-shader/x-vertex">
+        attribute vec4 vPosition;
+attribute vec4 vColor;
+varying vec4 fColor;
+
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
+
+void main()
+{
+    fColor = vColor;
+    gl_Position = projectionMatrix * modelViewMatrix * vPosition;
+}
+    </script>
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        precision mediump float;
+
+varying  vec4 fColor;
+
+void main()
+{
+    gl_FragColor = fColor;
+}
+    </script>
+
+    <script type="text/javascript" src="../Common/webgl-utils.js"></script>
+    <script type="text/javascript" src="../Common/initShaders.js"></script>
+    <script type="text/javascript" src="../Common/MV.js"></script>
+    <script type="text/javascript" src="h5d1.js"></script>
+</body>
+
+</html>
